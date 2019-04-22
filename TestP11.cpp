@@ -29,6 +29,7 @@ list<TElem> getRandom(int from, int to, int middle, int k, int all) {
 void check(list<TElem> l, int from, int to, int middle, int k, int all, list<TElem> orig) {
 	assert(l.size() == max(0, all - k));
 	for (list<TElem>::iterator it = l.begin(); it != l.end(); it++) {
+		//cout << *it << " " << middle << endl;
 		assert(*it > middle);
 		auto i = find(orig.begin(), orig.end(), *it);
 		assert(i != orig.end());
@@ -61,11 +62,11 @@ void testP11() {
 
 	for (int lower = 10; lower < 1000; lower += 100) {
 		for (int upper = 100; upper < 2000; upper += 200) {
-			cout << lower << " " << upper << endl;
 			for (int k = 1; k < 50; k= k + 5) {
 				int middle = (lower + upper) / 2;
 				list<TElem> l = getRandom(lower, upper, middle, k, upper - lower + 1);
 				list<TElem> orig = l;
+				cout << l.size()<<" "<<k << endl;
 				removeMin(l,  k);
 				check(l, lower, upper, (lower + upper) / 2, k, upper - lower + 1, orig);
 
