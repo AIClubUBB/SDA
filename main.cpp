@@ -70,7 +70,8 @@ void removeMin(list<TElem>& elements, int k)
 	{
 		elements.push_back(minHeap[i]);
 	}
-
+	delete minHeap;
+	delete elem;
 }
 int main()
 {
